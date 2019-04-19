@@ -11,5 +11,5 @@ class User < ApplicationRecord
 
     # Un user peu avoir plusieurs réservations et logements
     has_many :reservations
-    has_many :accommodations
+    has_many :user_administrator, foreign_key: 'administrator_id', class_name: "Accommodation"
 end
