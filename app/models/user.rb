@@ -9,7 +9,7 @@ class User < ApplicationRecord
     validates :phone_number, presence: true,
     format: { with: /\A(?:(?:\+|00)33[\s.-]{0,3}(?:\(0\)[\s.-]{0,3})?|0)[1-9](?:(?:[\s.-]?\d{2}){4}|\d{2}(?:[\s.-]?\d{3}){2})\z/, message: "please enter a valid french number" }
 
-    # Un user peu avoir plusieurs réservations et logements
-    has_many :reservations
-    has_many :user_administrator, foreign_key: 'administrator_id', class_name: "Accommodation"
+    # Un user peut avoir plusieurs réservations et logements, il devient alors un guest et un administrator
+    has_many :user_guests, foreign_key: 'guest_id', class_name: "Reservation"
+    has_many :user_administrators, foreign_key: 'administrator_id', class_name: "Accommodation"
 end
