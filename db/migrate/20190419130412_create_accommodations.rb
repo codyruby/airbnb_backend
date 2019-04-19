@@ -8,6 +8,7 @@ class CreateAccommodations < ActiveRecord::Migration[5.1]
       t.text :welcome_message
 
       t.references :administrator, index: true
+      t.belongs_to :city, index: true
 
       t.timestamps
     end
